@@ -1,17 +1,20 @@
+# frozen_string_literal: true
+
+# Module MyEnumerable
 module MyEnumerable
-  def all?(&block)
+  def all?
     result = true
     each { |num| result = false unless yield num }
     print result
   end
 
-  def any?(&block)
+  def any?
     result = false
     each { |num| result = true if yield num }
     print result
   end
 
-  def filter(&block)
+  def filter
     result = []
     each { |num| result.push(num) if yield num }
     print result
