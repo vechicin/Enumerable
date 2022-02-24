@@ -1,8 +1,19 @@
 module MyEnumerable
-  # def all?(obj = nil, &block)
-  #   return true if !block_given? && obj.nil? && include?(nil) == false && include?(false) == false
-  #   return false unless block_given? || !obj.nil?
+  def all?(&block)
+    result = true
+    each { |num| result = false unless yield num }
+    print result
+  end
 
-  #   if block_given?
-  # end
+  def any?(&block)
+    result = false
+    each { |num| result = true if yield num }
+    print result
+  end
+
+  def filter(&block)
+    result = []
+    each { |num| result.push(num) if yield num }
+    print result
+  end
 end
